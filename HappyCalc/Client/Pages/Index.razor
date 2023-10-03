@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<input type="text" @bind="inputText" />
+<button type="button" @onclick="AddExpression">Dodaj</button>
+
+<div>Preview:</div>
+<div>
+    @foreach (Expression expression in problem.Expressions)
+    {
+        <div>@expression.Text</div>
+        foreach (Expression argument in expression.AllArguments)
+        {
+            <div>@argument.Text</div>
+        }
+    }
+</div>
+
+
+@code {
+    private Problem problem = new Problem();
+    private string inputText = string.Empty;
+
+    private void Add()
+    {
+        problem = new Problem();        
+    }
+
+    private void AddExpression()
+    {
+        problem.Expressions.Add(new Expression(inputText));
+        inputText = "";
+    }
+}
