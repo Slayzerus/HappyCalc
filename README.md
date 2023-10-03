@@ -1,2 +1,2 @@
 # HappyCalc
-Simple mathematic solver app
+Simple math solver app
