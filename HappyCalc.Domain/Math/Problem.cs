@@ -5,11 +5,17 @@ namespace HappyCalc.Domain.Math
 {
     public class Problem
     {
+        #region Properties
+
         public List<Expression> Expressions { get; set; } = new();
 
         public List<Parameter> Parameters { get; set; } = new();
 
         public ProblemType ProblemType { get; set; } = ProblemType.Unknown;
+        
+        public int SelectedSolvingMethod { get; set; } = 0;
+
+        public Type? SelectedSolvingMethodType = null;
 
         public string ProblemTypeDescription
         {
@@ -18,6 +24,10 @@ namespace HappyCalc.Domain.Math
                 return ProblemType.GetEnumDescription();
             }
         }
+
+        #endregion Properties
+
+        #region Methods
 
         public void AddExpression(Expression expression)
         {
@@ -35,6 +45,8 @@ namespace HappyCalc.Domain.Math
             if (DetermineSystemOfEquationsType())
             {
                 ProblemType = ProblemType.SystemOfEquations;
+                SelectedSolvingMethodType = typeof(SystemOfEquationsSolvingMethod);
+                SelectedSolvingMethod = (int)SystemOfEquationsSolvingMethod.Substitution;
                 return;
             }            
         }
@@ -79,5 +91,7 @@ namespace HappyCalc.Domain.Math
 
             return true;
         }
+
+        #endregion Methods
     }
 }

@@ -75,6 +75,8 @@ namespace HappyCalc.Domain.Math
 
         #endregion Properties
 
+        #region Methods (public)
+
         public object? Calculate(List<Parameter> variableValues)
         {
             if (Arguments.Count == 0)
@@ -150,6 +152,8 @@ namespace HappyCalc.Domain.Math
 
             return result;
         }
+
+        #endregion Methods (public)
 
         #region Methods (private)
 

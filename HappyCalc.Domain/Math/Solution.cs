@@ -8,5 +8,6 @@ namespace HappyCalc.Domain.Math
 {
     public class Solution
     {
+        public List<SolutionStep> Steps { get; set; } = new();
     }
 }
